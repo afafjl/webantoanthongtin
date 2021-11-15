@@ -82,7 +82,17 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                <form action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q"
+                                placeholder="Search"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -118,7 +128,7 @@
         
          
             <div class="ml-5">
-                <div class="p-3 pt-4"><h5>Latest posts</h5></div>
+                <div class="p-3 pt-4"><h5>Posts</h5></div>
 
                     @foreach($posts as $p)
                         <div class=" row p-7">
@@ -133,7 +143,7 @@
                                             </a>     
                                         </div>
                                         <a class="p-1" href="/p/{{ $p->id }}">   
-                                            <div class="text-dark">{{ $p->title }}</div>
+                                            <div class="text-dark"><strong>{{ $p->title }}</strong></div>
                                             <div class="text-dark">{{ $p->description }}</div>
                                         </a>   
                                 </div>

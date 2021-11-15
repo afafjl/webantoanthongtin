@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use Request;
 
 class HomeController extends Controller
 {
@@ -26,6 +26,13 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->take(20)->get();
         return view('welcome', compact('posts'));
     }
-    
+    public function search(){
+         // $q = Request();
+          $q = Request::get('q');
+         $posts = Post::where('discription','like','%'.$q.'%')->orWhere('title','like','%'.$q.'%')->orWhere('description','like','%'.$q.'%')->paginate(20);
+         
+        return view('welcome' , compact('posts'));
+    }
 
 }
+    

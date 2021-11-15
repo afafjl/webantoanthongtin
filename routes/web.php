@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Auth::routes();
+Route::post('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show'); 
@@ -29,3 +30,5 @@ Route::get('/p/{post}/edit', [App\Http\Controllers\PostsController::class, 'edit
 Route::patch('/p/{post}', [App\Http\Controllers\PostsController::class, 'update'])->name('post.update'); 
 Route::get('/delete/{post}', [App\Http\Controllers\PostsController::class, 'delete'])->name('post.delete'); 
 Route::post('/sent/{post}', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store'); 
+Route::get('/feedback/create', [App\Http\Controllers\FeedbacksController::class, 'create'])->name('feedback.create'); 
+Route::post('/feedback', [App\Http\Controllers\FeedbacksController::class, 'store'])->name('feedback.store');

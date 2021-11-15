@@ -46,6 +46,6 @@
         
         @endforeach
     </div>
-
+    <div class="fixed-bottom p-5"><a href="/feedback/create" class="pt-10">Feedback</a></div>
 </div>
 @endsection
