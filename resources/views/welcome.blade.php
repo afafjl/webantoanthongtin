@@ -1,15 +1,17 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Home</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             
             html, body {
@@ -41,8 +43,11 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
+            .left {
+                text-align: left;
+            }
+            .right {
+                text-align: right;
             }
 
             .title {
@@ -65,37 +70,81 @@
             
         </style>
     </head>
+            
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+
+                   <strong> Web An Ninh</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                        <div class="">
+                        @if (Route::has('login'))
+                            <div class="top-right links">
+                                @auth
+                                    <a href="/profile/{{auth()->user()->id}}">Profile</a>
+                                @else
+                                    <a href="{{ route('login') }}">Login</a>
+
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}">Register</a>
+                                    @endif
+                                @endauth
+                            </div>
                         @endif
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    freeCodeGram
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                        @endguest
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
+
+        
+         
+            <div class="ml-5">
+                <div class="p-3 pt-4"><h5>Latest posts</h5></div>
+
+                    @foreach($posts as $p)
+                        <div class=" row p-7">
+                                <div class="col-1 right ">
+                                       <a href="/profile/{{ $p->user_id }} "> <img src="{{$p->user->profile->profileImage() }} " class="rounded-circle w-100" style="max-width: 28px;">
+                                       </a>
+                                </div>
+                                <div class="col-2 left">
+                                        <div class="font-weight-bold">
+                                            <a href="/profile/{{ $p->user_id }}">
+                                                <span class="text-dark">{{ $p->user->username }}</span>
+                                            </a>     
+                                        </div>
+                                        <a class="p-1" href="/p/{{ $p->id }}">   
+                                            <div class="text-dark">{{ $p->title }}</div>
+                                            <div class="text-dark">{{ $p->description }}</div>
+                                        </a>   
+                                </div>
+
+
+                        </div>
+                    @endforeach    
+                        
+                
+              </div>
+            </div>
+      
     </body>
 </html>

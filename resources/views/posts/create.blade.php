@@ -37,6 +37,7 @@
                            value="{{ old('description') }}"
                            autocomplete="description" autofocus
                            id="description" 
+
                            ></textarea>
 
 
