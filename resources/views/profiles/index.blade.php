@@ -27,7 +27,8 @@
             </div>
            
             <div class ="p-1">
-             {{$user->profile->description ?? ' Nothing'}}
+            
+             {{$user->profile->description ?? 'Nothing'}}
             </div>
         </div>
     </div>
@@ -38,7 +39,7 @@
                 <div class="row">
                     <a class="col-9" href="/p/{{ $post->id }}">
                         <div class="text-dark"><h3>{{ $post->title }}</h3></div>
-                        <div class="text-dark">{{ $post->description }}</div>
+                        <div class="text-dark">{{  \Illuminate\Support\Str::limit(($post->description), 100, $end = '....') }}</div>
                     </a>
 
                 </div>    

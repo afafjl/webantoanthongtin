@@ -6,7 +6,7 @@
         <div class="col-9 pt-3"> 
            
                     <div ><h3>{{ $post->title }}</h3></div>
-                    <div>{{ $post->description }}</div>
+                    <div>{!! nl2br(e($post->description))!!}</div>
                
               <div class="row">
                 <div class="col-3">
@@ -54,9 +54,9 @@
                                         <span class="text-dark">{{ $comment->user->username }}</span>
                                     </a>     
                                 </div>
-                                <div class="text-dark">{{ $comment->description }}</div>
+                                <div class="text-dark">{!! nl2br(e($comment->description))!!}</div>
                         </div>
-
+                        
 
                 </div>
              @endforeach    

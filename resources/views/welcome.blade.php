@@ -136,7 +136,7 @@
                                        <a href="/profile/{{ $p->user_id }} "> <img src="{{$p->user->profile->profileImage() }} " class="rounded-circle w-100" style="max-width: 28px;">
                                        </a>
                                 </div>
-                                <div class="col-2 left">
+                                <div class="col-6    left">
                                         <div class="font-weight-bold">
                                             <a href="/profile/{{ $p->user_id }}">
                                                 <span class="text-dark">{{ $p->user->username }}</span>
@@ -144,8 +144,8 @@
                                         </div>
                                         <a class="p-1" href="/p/{{ $p->id }}">   
                                             <div class="text-dark"><strong>{{ $p->title }}</strong></div>
-                                            <div class="text-dark">{{ $p->description }}</div>
-                                        </a>   
+                                            <div class="text-dark"> {{  \Illuminate\Support\Str::limit(($p->description), 100, $end = '....') }}</div>
+                                        </a>  
                                 </div>
 
 
