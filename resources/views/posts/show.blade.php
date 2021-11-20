@@ -44,7 +44,7 @@
         
             @foreach($post->comments as $comment)
                 <div class=" row p-4">
-                         <div class="col-1 ">
+                         <div class="col-1 ">   
                              <a href="/profile/{{ $comment->user_id }} "> <img src="{{$comment->user->profile->profileImage() }} " class="rounded-circle w-100" style="max-width: 28px;">
                                        </a>
                         </div>
