@@ -40,6 +40,7 @@
                     <a class="col-9" href="/p/{{ $post->id }}">
                         <div class="text-dark"><h3>{{ $post->title }}</h3></div>
                         <div class="text-dark">{{  \Illuminate\Support\Str::limit(($post->description), 100, $end = '....') }}</div>
+                        
                     </a>
 
                 </div>    
@@ -47,6 +48,9 @@
         
         @endforeach
     </div>
-    <div class="fixed-bottom p-5"><a href="/feedback/create" class="pt-10">Feedback</a></div>
+         @can('update', $user->profile)
+         <div class="fixed-bottom p-5"><a href="/feedback/create" class="pt-10">Feedback</a></div>
+         @endcan
+    
 </div>
 @endsection

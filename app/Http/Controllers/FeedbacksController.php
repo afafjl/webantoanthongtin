@@ -14,9 +14,9 @@ class FeedbacksController extends Controller
 
     public function store(Request $request)
     {
-        // $data= request()->validate([
-        //     'description'=>'required',
-        // ]);
+        $data= request()->validate([
+            'description'=>'required',
+        ]);
 
         $data=Feedback::create([
             'user_id'=>auth()->user()->id,

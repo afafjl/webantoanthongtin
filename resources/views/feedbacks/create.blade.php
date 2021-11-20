@@ -18,11 +18,10 @@
                           rows="9" cols="80"
                            class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
                            name="description"
-                           value="{{ old('description') }}"
                            autocomplete="description" autofocus
                            id="description" 
 
-                           ></textarea>
+                           >{{ old('description') }}</textarea>
 
 
                     @if ($errors->has('description'))

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class PostsController extends Controller
 {
     public function __construct()
@@ -64,5 +65,6 @@ class PostsController extends Controller
         
         return redirect("/p/{$post->id}");
     }
+  
 }
 

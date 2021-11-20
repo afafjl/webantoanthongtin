@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-9 pt-3"> 
            
-                    <div ><h3>{{ $post->title }}</h3></div>
-                    <div>{!! nl2br(e($post->description))!!}</div>
-               
+                    <div ><h3>{!! $post->title !!}</h3></div>
+                    <div class="text-dark"> {!! nl2br(e($post->description))!!}</div>
+                    
               <div class="row">
                 <div class="col-3">
                     @can('delete', $post)
@@ -76,7 +76,6 @@
                                     rows="2" cols="80"
                                     class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
                                     name="description"
-                                    value="{{ old('description') }}"
                                     autocomplete="description" autofocus
                                     id="description" 
                                     ></textarea>
