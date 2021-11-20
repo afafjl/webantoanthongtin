@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="p-3"><h2>posts</h2></div>
+    <div class="p-3"><h3>posts</h3></div>
     <div class="row pt-5">
         @foreach($user->posts as $post)
             <div class="col-4 pb-4">
