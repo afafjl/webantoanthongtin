@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function search(){
          // $q = Request();
           $q = Request::get('q');
-         $posts = Post::where('discription','like','%'.$q.'%')->orWhere('title','like','%'.$q.'%')->orWhere('description','like','%'.$q.'%')->paginate(20);
+         $posts = Post::where('description','like','%'.$q.'%')->orWhere('title','like','%'.$q.'%')->paginate(20);
          
         return view('welcome' , compact('posts'));
     }
