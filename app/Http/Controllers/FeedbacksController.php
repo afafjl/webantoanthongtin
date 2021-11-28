@@ -18,13 +18,13 @@ class FeedbacksController extends Controller
             'description'=>'required',
         ]);
 
-        $data=Feedback::create([
-            'user_id'=>auth()->user()->id,
-            'description'=>$request->description,
-        ]);
-        // auth()->user()->feetbacks()->create([
-        //     'description'=> $data['description'],
+        // $data=Feedbacks::create([
+        //     'user_id'=>auth()->user()->id,
+        //     'description'=>$request->description,
         // ]);
+        auth()->user()->feedbacks()->create([
+            'description'=> $data['description'],
+        ]);
       
         return redirect('/profile/' . auth()->user()->id);
     }

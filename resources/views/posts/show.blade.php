@@ -30,7 +30,7 @@
                     <div>
                         <div class="font-weight-bold">
                             <a href="/profile/{{ $post->user->id }}">
-                                <span class="text-dark">{{ $post->user->username }}</span>
+                                <span class="text-dark">{!! $post->user->username !!}</span>
                             </a>     
                         </div>
                     </div>
@@ -51,10 +51,10 @@
                         <div class="col-11 ">
                                 <div class="font-weight-bold">
                                     <a href="/profile/{{ $comment->user->id }}">
-                                        <span class="text-dark">{{ $comment->user->username }}</span>
+                                        <span class="text-dark">{!! nl2br(e($comment->user->username))!!}</span>
                                     </a>     
                                 </div>
-                                <div class="text-dark">{!! nl2br(e($comment->description))!!}</div>
+                                <div class="text-dark">{!! nl2br(e($comment->description))!!}</div> 
                         </div>
                         
 
