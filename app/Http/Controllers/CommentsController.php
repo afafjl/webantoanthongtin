@@ -21,6 +21,8 @@ class CommentsController extends Controller
    
         return redirect('/p/' . $post->id);
     }
+
+
     // public function store(Request $request)
     // {
     // 	$request->validate([
